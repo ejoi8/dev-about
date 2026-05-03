@@ -10,6 +10,10 @@ Route::prefix('dev')->group(function (): void {
         return view('dev-about::about');
     });
 
+    if (! app()->environment('local')) {
+        return;
+    }
+
     Route::get('/logout', function () {
         Auth::logout();
 
